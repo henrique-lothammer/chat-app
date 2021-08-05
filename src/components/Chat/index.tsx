@@ -3,6 +3,11 @@ import queryString from 'query-string'
 import io, { Socket } from 'socket.io-client'
 import { DefaultEventsMap } from 'socket.io-client/build/typed-events'
 
+import InputBox from './InputBox'
+import MessagesBox from './MessagesBox'
+
+import { ChatContainer, Content } from './styles'
+
 interface Props {
   location: {
     search: string
@@ -45,7 +50,11 @@ const Chat = ({ location }: Props): React.ReactElement => {
     })
   }, [])
 
-  const sendMessage = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const sendMessage = (
+    event:
+      | React.KeyboardEvent<HTMLInputElement>
+      | React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     event.preventDefault()
 
     if (message) {
@@ -56,24 +65,18 @@ const Chat = ({ location }: Props): React.ReactElement => {
   console.log(message, messages)
 
   return (
-    <div>
-      <div>
-        <ul>
-          {messages.map((msg, index) => (
-            <li key={index}>
-              <strong>{msg.user}</strong>
-              {`: ${msg.text}`}
-            </li>
-          ))}
-        </ul>
-        <input
-          value={message}
-          onChange={(event) => setMessage(event.target.value)}
-          onKeyPress={(event) =>
-            event.key === 'Enter' ? sendMessage(event) : null
-          }
-        />
-      </div>
+    <div className='wrapper medium'>
+      <ChatContainer>
+        <h1>{room}</h1>
+        <Content>
+          <MessagesBox messages={messages} user={name} />
+          <InputBox
+            message={message}
+            setMessage={setMessage}
+            sendMessage={sendMessage}
+          />
+        </Content>
+      </ChatContainer>
     </div>
   )
 }
