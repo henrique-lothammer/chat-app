@@ -7,7 +7,7 @@ export const Form = styled.form`
   input {
     width: 100%;
     height: 40px;
-    border: 1px solid #fff;
+    border: 1px solid ${(props) => props.theme.common.white};
     padding: 0 10px;
   }
 

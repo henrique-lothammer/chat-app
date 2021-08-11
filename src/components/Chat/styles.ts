@@ -26,3 +26,8 @@ export const ChatContainer = styled.article`
 export const Content = styled.div`
   width: 100%;
 `
+
+export const Main = styled.div`
+  width: 100%;
+  display: flex;
+`

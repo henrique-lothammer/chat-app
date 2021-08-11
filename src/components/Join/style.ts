@@ -25,7 +25,7 @@ export const JoinContainer = styled.article`
   input {
     width: calc(100% - 20px);
     height: 40px;
-    border: 1px solid #fff;
+    border: 1px solid ${(props) => props.theme.common.white};
     padding: 0 10px;
   }
 

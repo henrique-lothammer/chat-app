@@ -18,7 +18,7 @@ const MessagesBox = ({ messages, user }: Props): React.ReactElement => {
     <ScrollToBottom>
       <Box>
         {messages.map((msg, index) => (
-          <Message key={index} isUser={msg.user === user}>
+          <Message key={index} isUser={msg.user === user.toLowerCase()}>
             <div>
               {msg.user !== user && <strong>{msg.user}</strong>}
               {msg.text}

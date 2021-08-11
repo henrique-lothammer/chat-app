@@ -6,8 +6,9 @@ import { useHistory } from 'react-router-dom'
 
 import InputBox from './InputBox'
 import MessagesBox from './MessagesBox'
+import MembersBox from './MembersBox'
 
-import { ChatContainer, Content } from './styles'
+import { ChatContainer, Main, Content } from './styles'
 
 interface Props {
   location: {
@@ -19,6 +20,12 @@ interface IMessage {
   user: string
   text: string
 }
+
+interface IUsers {
+  name: string
+  id: string
+}
+
 let socket: Socket<DefaultEventsMap>
 
 const Chat = ({ location }: Props): React.ReactElement => {
@@ -26,6 +33,7 @@ const Chat = ({ location }: Props): React.ReactElement => {
   const [room, setRoom] = useState<string>('')
   const [message, setMessage] = useState<string>('')
   const [messages, setMessages] = useState<IMessage[]>([])
+  const [users, setUsers] = useState<IUsers[]>([])
 
   const history = useHistory()
 
@@ -39,18 +47,21 @@ const Chat = ({ location }: Props): React.ReactElement => {
     setName(String(name))
     setRoom(String(room))
 
-    console.log('emit join')
-    socket.emit('join', { name, room }, (error: any) => {
+    socket.emit('join', { name, room }, (error: string) => {
       if (error) {
-        alert(error)
+        alert(error) // replace with toast
         history.push('/')
       }
     })
-  }, [ENDPOINT, location.search])
+  }, [ENDPOINT, history, location.search])
 
   useEffect(() => {
     socket.on('message', (message) => {
       setMessages((messages) => [...messages, message])
+    })
+
+    socket.on('roomData', (room) => {
+      setUsers(room.users)
     })
   }, [])
 
@@ -72,14 +83,17 @@ const Chat = ({ location }: Props): React.ReactElement => {
     <div className='wrapper medium'>
       <ChatContainer>
         <h1>{room}</h1>
-        <Content>
-          <MessagesBox messages={messages} user={name} />
-          <InputBox
-            message={message}
-            setMessage={setMessage}
-            sendMessage={sendMessage}
-          />
-        </Content>
+        <Main>
+          <MembersBox users={users} />
+          <Content>
+            <MessagesBox messages={messages} user={name} />
+            <InputBox
+              message={message}
+              setMessage={setMessage}
+              sendMessage={sendMessage}
+            />
+          </Content>
+        </Main>
       </ChatContainer>
     </div>
   )
