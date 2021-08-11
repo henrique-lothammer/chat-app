@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const ChatContainer = styled.article`
-  background: ${(props) => props.theme.palette.common.gray};
+  background: ${(props) => props.theme.common.gray};
   width: 100%;
   min-height: 200px;
   border-radius: 10px;
@@ -18,8 +18,8 @@ export const ChatContainer = styled.article`
     font-size: 3rem;
     text-align: center;
     line-height: 4rem;
-    background: ${(props) => props.theme.palette.primary.main};
-    color: ${(props) => props.theme.palette.primary.contrastText};
+    background: ${(props) => props.theme.primary.main};
+    color: ${(props) => props.theme.primary.contrastText};
   }
 `
 

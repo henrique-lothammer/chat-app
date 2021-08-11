@@ -38,10 +38,10 @@ export const Message = styled.li<IMessage>`
     overflow-wrap: break-word;
     ${(props) =>
       props.isUser
-        ? `background: ${props.theme.palette.primary.main};
+        ? `background: ${props.theme.primary.main};
         align-self: flex-end;
         text-align:right;`
-        : `background: ${props.theme.palette.secondary.main};`}
+        : `background: ${props.theme.secondary.main};`}
 
     strong {
       display: block;

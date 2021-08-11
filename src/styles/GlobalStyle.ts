@@ -14,8 +14,8 @@ export default createGlobalStyle`
         font-size: 62.5%;
     }
     body{
-        background: ${(props) => props.theme.palette.common.black};
-        color: ${(props) => props.theme.palette.primary.contrastText};
+        background: ${(props) => props.theme.common.black};
+        color: ${(props) => props.theme.primary.contrastText};
         font-family: Roboto, Arial, Helvetica, sans-serif;
         font-size: 1.6rem;
         min-width: 360px;

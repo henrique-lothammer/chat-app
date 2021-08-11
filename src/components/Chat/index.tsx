@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import queryString from 'query-string'
 import io, { Socket } from 'socket.io-client'
 import { DefaultEventsMap } from 'socket.io-client/build/typed-events'
+import { useHistory } from 'react-router-dom'
 
 import InputBox from './InputBox'
 import MessagesBox from './MessagesBox'
@@ -26,6 +27,8 @@ const Chat = ({ location }: Props): React.ReactElement => {
   const [message, setMessage] = useState<string>('')
   const [messages, setMessages] = useState<IMessage[]>([])
 
+  const history = useHistory()
+
   const ENDPOINT = 'localhost:5000'
 
   useEffect(() => {
@@ -40,6 +43,7 @@ const Chat = ({ location }: Props): React.ReactElement => {
     socket.emit('join', { name, room }, (error: any) => {
       if (error) {
         alert(error)
+        history.push('/')
       }
     })
   }, [ENDPOINT, location.search])

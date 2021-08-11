@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const JoinContainer = styled.article`
-  background: ${(props) => props.theme.palette.common.gray};
+  background: ${(props) => props.theme.common.gray};
   width: 100%;
   min-height: 200px;
   border-radius: 10px;
@@ -18,8 +18,8 @@ export const JoinContainer = styled.article`
     font-size: 3rem;
     text-align: center;
     line-height: 4rem;
-    background: ${(props) => props.theme.palette.primary.main};
-    color: ${(props) => props.theme.palette.primary.contrastText};
+    background: ${(props) => props.theme.primary.main};
+    color: ${(props) => props.theme.primary.contrastText};
   }
 
   input {
@@ -40,7 +40,7 @@ export const JoinContainer = styled.article`
     border: 1px solid rgba(0, 0, 0, 0);
     padding: 0 10px;
     text-transform: uppercase;
-    background: ${(props) => props.theme.palette.primary.main};
-    color: ${(props) => props.theme.palette.primary.contrastText};
+    background: ${(props) => props.theme.primary.main};
+    color: ${(props) => props.theme.primary.contrastText};
   }
 `

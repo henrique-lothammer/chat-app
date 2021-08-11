@@ -18,7 +18,7 @@ export const Form = styled.form`
     border: 1px solid rgba(0, 0, 0, 0);
     padding: 0 10px;
     text-transform: uppercase;
-    background: ${(props) => props.theme.palette.primary.main};
-    color: ${(props) => props.theme.palette.primary.contrastText};
+    background: ${(props) => props.theme.primary.main};
+    color: ${(props) => props.theme.primary.contrastText};
   }
 `
