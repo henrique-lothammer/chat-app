@@ -49,7 +49,7 @@ const Chat = ({ location }: Props): React.ReactElement => {
 
     socket.emit('join', { name, room }, (error: string) => {
       if (error) {
-        alert(error) // replace with toast
+        // alert(error) // replace with toast
         history.push('/')
       }
     })
