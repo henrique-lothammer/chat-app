@@ -9,6 +9,8 @@ export const Form = styled.form`
     height: 40px;
     border: 1px solid ${(props) => props.theme.common.white};
     padding: 0 10px;
+    background: ${(props) => props.theme.common.white};
+    color: ${(props) => props.theme.primary.contrastText};
   }
 
   button {

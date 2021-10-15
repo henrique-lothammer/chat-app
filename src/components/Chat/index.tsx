@@ -37,7 +37,7 @@ const Chat = ({ location }: Props): React.ReactElement => {
 
   const history = useHistory()
 
-  const ENDPOINT = 'localhost:5000'
+  const ENDPOINT = 'https://simple-react-chat-appl.herokuapp.com/'
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search)
@@ -76,8 +76,6 @@ const Chat = ({ location }: Props): React.ReactElement => {
       socket.emit('sendMessage', message, () => setMessage(''))
     }
   }
-
-  console.log(message, messages)
 
   return (
     <div className='wrapper medium'>

@@ -47,4 +47,8 @@ export default createGlobalStyle`
       justify-content: center;
       flex-direction: column;
     }
+
+    ::placeholder{
+      color:${(props) => props.theme.primary.contrastText};;
+    }
 `

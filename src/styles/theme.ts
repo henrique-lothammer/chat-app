@@ -3,11 +3,11 @@ import { DefaultTheme } from 'styled-components'
 export const defaultTheme: DefaultTheme = {
   common: {
     black: '#222831',
-    white: '#ffffff',
-    gray: '#b6b3b3',
+    white: '#515252',
+    gray: '#242d32',
   },
   primary: {
-    main: '#037ffc',
+    main: '#373839',
     contrastText: '#ffffff',
   },
   secondary: {
